@@ -1,0 +1,16 @@
+[workspace]
+members = ["crates/facalty-engine", "crates/facalty-repl"]
+
+resolver = "2"
+
+[workspace.package]
+version = "0.1.0"
+authors = ["Samuel McNally"]
+edition = "2024"
+license = "MIT"
+repository = "https://github.com/devmcsam/facalty"
+homepage = "https://github.com/devmcsam/facalty"
+description = "A high performance mathematical expression evaluator"
+readme = "README.md"
+
+[workspace.dependencies]
