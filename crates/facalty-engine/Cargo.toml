@@ -8,5 +8,8 @@ repository = "https://github.com/devmcsam/facalty/crates/facalty-engine"
 homepage = "https://github.com/devmcsam/facalty/crates/facalty-engine"
 description.workspace = true
 readme = "README.md"
+categories = ["mathematics", "finance", "science"]
+keywords = ["math", "expression", "engine", "evaluation"]
 
 [dependencies]
+num-rational = "0.4.2"

@@ -8,6 +8,8 @@ repository = "https://github.com/devmcsam/facalty/crates/facalty-repl"
 homepage = "https://github.com/devmcsam/facalty/crates/facalty-repl"
 description = "A command line interface for the facalty library"
 readme = "README.md"
+categories = ["mathematics", "command-line-interface", "finance", "science"]
+keywords = ["math", "expression", "evaluation", "tui"]
 
 [dependencies]
 clap = { version = "4.5.58", features = ["derive"] }
