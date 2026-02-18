@@ -9,6 +9,12 @@ pub enum BuiltInFunction {
     Asin,
     Acos,
     Atan,
+    Sinpi,
+    Cospi,
+    Tanpi,
+    ASinPi,
+    ACosPi,
+    ATanPi,
     Sinh,
     Cosh,
     Tanh,
@@ -28,6 +34,39 @@ pub enum BuiltInFunction {
     Derivative,
     Max,
     Min,
+}
+
+impl BuiltInFunction {
+    pub fn map_str(input: &str) -> Option<Self> {
+        match input {
+            "sin" => Some(Self::Sin),
+            "cos" => Some(Self::Cos),
+            "tan" => Some(Self::Tan),
+            "asin" => Some(Self::Asin),
+            "acos" => Some(Self::Acos),
+            "atan" => Some(Self::Atan),
+            "sinh" => Some(Self::Sinh),
+            "cosh" => Some(Self::Cosh),
+            "tanh" => Some(Self::Tanh),
+            "sqrt" => Some(Self::Sqrt),
+            "cbrt" => Some(Self::Cbrt),
+            "root" => Some(Self::Root),
+            "factorial" => Some(Self::Factorial),
+            "abs" => Some(Self::Abs),
+            "ln" => Some(Self::Ln),
+            "log10" => Some(Self::Log10),
+            "log" => Some(Self::LogBase),
+            "round" => Some(Self::Round),
+            "truncate" => Some(Self::Truncate),
+            "ceil" => Some(Self::Ceil),
+            "floor" => Some(Self::Floor),
+            "integral" => Some(Self::Integral),
+            "derivative" => Some(Self::Derivative),
+            "max" => Some(Self::Max),
+            "min" => Some(Self::Min),
+            _ => None,
+        }
+    }
 }
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]

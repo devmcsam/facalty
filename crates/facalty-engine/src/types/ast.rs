@@ -8,29 +8,29 @@ use super::glue::{
 /// A single node in the expression tree.
 #[derive(Debug, Clone)]
 pub enum Node {
-    /// A numeric literal: `42`, `3/4`, `2.5`
+    /// floating point or integer
     Number(Number),
 
-    /// A single-character variable: `x`, `y`, …
+    /// single character
     Variable(char),
 
-    /// A binary operation: `left op right`
+    /// A binary operation: 'left op right'
     BinaryOp {
         op: Operator,
         left: Box<Self>,
         right: Box<Self>,
     },
 
-    /// Unary negation: `-expr`
+    /// Unary negation: '-expr'
     UnaryNeg(Box<Self>),
 
-    /// Call to a built-in function: `sin(expr)`, `log(base, expr)`, …
+    /// Call to a built in, this is just an enum with a match
     BuiltInCall {
         function: BuiltInFunction,
         args: Vec<Self>,
     },
 
-    /// Call to a user-defined function: `f(expr, expr, …)`
+    /// Call to a user defined function
     UserCall { id: FunctionId, args: Vec<Self> },
 }
 
@@ -48,7 +48,7 @@ pub enum Operator {
 }
 
 impl Operator {
-    /// Precedence level (higher binds tighter). Useful for a Pratt / precedence-climbing parser.
+    /// Precedence level (higher binds tighter).
     #[must_use]
     pub const fn precedence(self) -> u8 {
         match self {
@@ -58,7 +58,7 @@ impl Operator {
         }
     }
 
-    /// Whether this operator is right-associative (`^` is, the rest aren't).
+    /// Whether this operator is right-associative ('^' is, the rest aren't).
     #[must_use]
     pub const fn is_right_assoc(self) -> bool {
         matches!(self, Self::Pow)
@@ -67,7 +67,7 @@ impl Operator {
 
 // ── Tokens (for the lexer) ──────────────────────────────────────
 
-/// A token emitted by the lexer — consumed by the parser to build `Node`s.
+/// A token emitted by the lexer
 #[derive(Debug, Clone, PartialEq)]
 pub enum Token {
     Number(Number),
@@ -76,7 +76,7 @@ pub enum Token {
     LParen,
     RParen,
     Comma,
-    Equals, // `=`  (for `f(x,y) = …`)
+    Equals, // '=' for "f(x) ="
     BuiltInFunction(BuiltInFunction),
     Identifier(String), // unknown name → might be a user function
     Eof,
